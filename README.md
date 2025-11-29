@@ -196,23 +196,22 @@ O sistema implementa:
 ---
 
 ## ESTRUTURA DE DIRETÓRIOS
-
-```text
-/
-├── src/
-│   ├── main.py
-│   ├── menus.py
-│   ├── services.py
-│   ├── utils.py
-│   └── config.py
+```
+petvida/
+├── petvida/                # Pasta principal do código-fonte da aplicação
+│   ├── config.py           # Configurações do banco de dados
+│   ├── main.py             # Arquivo principal que inicia o sistema
+│   ├── menus.py            # Menus e navegação por perfis
+│   ├── services.py         # Regras de negócio e operações SQL
+│   ├── utils.py            # Funções auxiliares (validações, leitura, etc.)
 │
-├── database/
-│   └── dbcode.sql
+├── docs/                   # Documentação do projeto (MER, DER, Minimundo, relatório etc.)
+│   └── *arquivos.docx*
 │
-├── docs/
-│   └── Documentação (MER, DER, Minimundo)
+├── dbcode.sql              # Script SQL contendo criação de schema, tabelas e constraints
 │
-└── README.md
+├── README.md               # Documentação principal do repositório
+│
 ```
 
 ---
