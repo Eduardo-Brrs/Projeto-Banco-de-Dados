@@ -1,118 +1,87 @@
- Hospital Veterinário PetVida – Sistema Python + PostgreSQL
+# HOSPITAL VETERINÁRIO PETVIDA  
+### Sistema de Gerenciamento em Python + PostgreSQL
 
-Este repositório contém a implementação completa do sistema do Hospital Veterinário PetVida, desenvolvido para fins acadêmicos na disciplina de Projeto de Banco de Dados do curso de Sistemas de Informação – CESMAC.
+---
 
-O projeto integra:
+## AUTORES  
+**Eduardo Souza de Barros**  
+**Gabriel Stoffel Cirilo**
 
- Modelagem conceitual e lógica
- Banco de dados em PostgreSQL
- Sistema em Python
- Autenticação com senha criptografada
- Relacionamentos entre Dono, Animal, Consulta, Cirurgia e Usuário
- CRUD completo para todos os tipos de usuários
+---
 
- Autores
+## SUMÁRIO
+- Visão Geral  
+- Arquitetura do Sistema  
+- Tecnologias Utilizadas  
+- Instalação  
+- Configuração  
+- Execução  
+- Modelagem do Banco  
+- Funcionalidades  
+- Segurança  
+- Estrutura de Diretórios  
+- Licença  
 
-Eduardo Souza de Barros
-Gabriel Stoffel Cirilo
+---
 
- Sobre o Projeto
+## VISÃO GERAL
 
-O objetivo do sistema é permitir o gerenciamento completo do Hospital Veterinário PetVida, oferecendo funcionalidades diferentes para:
+O Sistema PetVida é uma aplicação de gerenciamento veterinário desenvolvida em Python integrado ao banco PostgreSQL.  
+A solução permite administrar tutores, animais, consultas, cirurgias e usuários, com controle de acesso baseado em perfis (Administrador, Tutor e Veterinário).
 
-Administrador
+O sistema foi projetado para fins acadêmicos, seguindo boas práticas de modelagem, integridade referencial e divisão modular.
 
-Tutor (Dono do Animal)
+---
 
-Veterinário
+## ARQUITETURA DO SISTEMA
 
-Toda a aplicação foi construída em Python, utilizando psycopg2 para conexão com o banco de dados PostgreSQL, além de rotinas para autenticação via bcrypt e menus em terminal.
+O sistema foi dividido em módulos para facilitar manutenção, leitura e organização:
 
- Tecnologias Utilizadas
-Backend
+```
+src/
+│  config.py        → Configuração e conexão com PostgreSQL
+│  main.py          → Arquivo principal e fluxo da aplicação
+│  menus.py         → Todos os menus e navegação
+│  services.py      → Regras de negócio e operações SQL
+│  utils.py         → Funções de validação e utilidades
+```
 
-Python 3
+---
 
-psycopg2 (PostgreSQL driver)
+## TECNOLOGIAS UTILIZADAS
 
-bcrypt (hash de senha)
+### Backend
+- Python 3  
+- psycopg2 (integração com PostgreSQL)  
+- bcrypt (hash seguro de senha)
 
-Banco de Dados
+### Banco de Dados
+- PostgreSQL  
+- Schema utilizado: `petvida`
 
-PostgreSQL 15+
+### Ferramentas adicionais
+- pgAdmin  
+- Git / GitHub  
 
-Schema: petvida
+---
 
-Estrutura do Projeto
-/src
-   config.py
-   main.py
-   menus.py
-   services.py
-   utils.py
+## INSTALAÇÃO
 
-/database
-   dbcode.sql  
+Instale as dependências do projeto:
 
- Modelagem do Banco
-
-A modelagem inclui:
-
-Minimundo
-
-MER
-
-DER
-
-Regras de integridade e relacionamentos
-
-Índices e constraints
-
-Entidades principais:
-
-Dono
-
-Animal
-
-Consulta
-
-Cirurgia
-
-Usuário (Administrador, Tutor, Veterinário)
-
- Como Executar o Sistema
-1️⃣ Instalar dependências
+```bash
 pip install psycopg2 bcrypt
+```
 
-2️⃣ Criar banco de dados no PostgreSQL
+Certifique-se de que o PostgreSQL está instalado e funcionando corretamente.
 
-Abra o pgAdmin
+---
 
-Crie um banco chamado, por exemplo: postgres ou petvida
+## CONFIGURAÇÃO
 
-Execute o script SQL encontrado em /database/dbcode
+Ajuste o arquivo `config.py` com os dados da sua conexão:
 
-O script cria automaticamente:
-
-Schema petvida
-
-Todas as tabelas
-
-Índices
-
-Constraints
-
-Atualizações (ALTER TABLE)
-
-3️⃣ Configurar credenciais no arquivo
-
-Abra o arquivo:
-
-config.py
-
-
-E ajuste:
-
+```python
 DB_CONFIG = {
     "host": "localhost",
     "port": 5432,
@@ -121,76 +90,136 @@ DB_CONFIG = {
     "password": "SUA_SENHA",
     "options": "-c search_path=petvida"
 }
+```
 
-4️⃣ Executar o sistema
+Após isso, execute o script SQL:
+
+```
+/database/dbcode.sql
+```
+
+Esse script cria:
+
+- O schema `petvida`
+- Todas as tabelas do sistema
+- Constraints
+- Índices
+- Ajustes finais com ALTER TABLE
+
+---
+
+## EXECUÇÃO
+
+Para iniciar o sistema:
+
+```bash
 python main.py
+```
 
+Na primeira execução:
 
-Na primeira execução, o sistema:
+- O schema será criado (caso não exista)
+- As tabelas serão criadas automaticamente
+- Um administrador padrão será gerado
+- O menu principal será exibido
 
-Cria o esquema e tabelas automaticamente
+Após o login, o usuário acessa o menu correspondente ao seu perfil.
 
-Garante que um administrador padrão exista
+---
 
-Exibe o menu principal de acesso
+## MODELAGEM DO BANCO
 
-🧩 Funcionalidades
-👑 Administrador
+Baseada no Minimundo, MER e DER desenvolvidos no projeto acadêmico.
 
-Cadastro e gerenciamento de usuários
+### Entidades Principais
+- **Dono**
+- **Animal**
+- **Consulta**
+- **Cirurgia**
+- **Usuário** (Administrador, Tutor e Veterinário)
 
-Registro e edição de donos
+### Relacionamentos Essenciais
+- Dono → Animal  
+- Animal → Consulta  
+- Animal → Cirurgia  
+- Usuário (Tutor) → Dono  
 
-Cadastro de animais
+Toda integridade é mantida via foreign keys e políticas ON DELETE CASCADE.
 
-Agendamento e edição de consultas
+---
 
-Registro de cirurgias
+## FUNCIONALIDADES
 
-Relatórios: animais por dono, consultas por período, etc.
+### Administrador
+- Criar, editar e excluir usuários  
+- Gerenciar tutores  
+- Gerenciar animais  
+- Registrar consultas  
+- Registrar cirurgias  
+- Relatórios:
+  - Animais por tutor  
+  - Consultas por período  
+  - Busca por CPF  
+- Limpeza geral das tabelas para manutenção  
 
-Limpeza completa das tabelas
+---
 
-🧍‍♂️ Tutor (Cliente)
+### Tutor (Cliente)
+- Visualizar dados pessoais  
+- Atualizar informações  
+- Cadastrar animais  
+- Visualizar animais cadastrados  
+- Consultar consultas  
+- Cancelar consultas  
 
-Ver seus dados e animais
+---
 
-Cadastrar novos animais
+### Veterinário
+- Visualizar animais cadastrados  
+- Registrar consultas  
+- Registrar cirurgias  
+- Ver seus próprios atendimentos  
+- Filtrar consultas por período  
 
-Ver consultas e cirurgias
+---
 
-Cancelar consultas
+## SEGURANÇA
 
-Atualizar informações do perfil
+O sistema implementa:
 
-🩺 Veterinário
+- Hash seguro de senha via `bcrypt`  
+- Bloqueio após múltiplas tentativas incorretas  
+- Validação de entrada em todos os menus  
+- Controle rígido de permissões por tipo de usuário  
+- Integridade garantida via constraints no PostgreSQL  
 
-Ver lista de todos os animais
+---
 
-Registrar consultas
+## ESTRUTURA DE DIRETÓRIOS
 
-Registrar cirurgias
+```text
+/
+├── src/
+│   ├── main.py
+│   ├── menus.py
+│   ├── services.py
+│   ├── utils.py
+│   └── config.py
+│
+├── database/
+│   └── dbcode.sql
+│
+├── docs/
+│   └── Documentação (MER, DER, Minimundo)
+│
+└── README.md
+```
 
-Acessar seus atendimentos específicos
+---
 
+## LICENÇA
 
- Segurança
-
-O sistema utiliza:
-
-Hash seguro de senha via bcrypt
-
-Bloqueio de conta após tentativas incorretas
-
-Controle de sessão por tipo de usuário
-
-ON DELETE CASCADE para preservar integridade
-
- Licença
-
-Este projeto foi desenvolvido para fins acadêmicos e pode ser reutilizado para estudo e aprendizado, desde que citados os autores.
-
-✉️ Contato
-
-📌 Eduardo Souza de Barros
-📌 Gabriel Stoffel Cirilo
+Projeto acadêmico desenvolvido para a disciplina de Projeto de Banco de Dados – CESMAC.  
+Uso permitido para fins de estudo, desde que citados os autores:  
+**Eduardo Souza de Barros**  
+**Gabriel Stoffel Cirilo**
