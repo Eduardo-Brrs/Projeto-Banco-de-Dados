@@ -1,212 +1,8 @@
-# PETVIDA VETERINARY HOSPITAL
-### Management System in Python + PostgreSQL
-EN-US
----
-
-## AUTHORS
-Eduardo Souza de Barros  
-Gabriel Stoffel Cirilo
-
----
-
-## TABLE OF CONTENTS
-- Overview
-- System Architecture
-- Technologies Used
-- Installation
-- Configuration
-- Execution
-- Database Modeling
-- Features
-- Security
-- Directory Structure
-
----
-
-## OVERVIEW
-
-PetVida is a veterinary management system developed in Python integrated with PostgreSQL.
-
-The application allows management of pet owners, animals, consultations, surgeries, and system users, with role-based access control (Administrator, Owner, and Veterinarian).
-
-This project was developed for academic purposes, following good practices of database modeling, referential integrity, and modular code structure.
-
----
-
-## SYSTEM ARCHITECTURE
-
-The system is divided into modules to improve maintainability, readability, and organization.
-
-src/
-config.py → PostgreSQL configuration and connection  
-main.py → Main application entry point  
-menus.py → System menus and navigation  
-services.py → Business logic and SQL operations  
-utils.py → Validation functions and utilities  
-
----
-
-## TECHNOLOGIES USED
-
-Backend
-- Python 3
-- psycopg2 (PostgreSQL integration)
-- bcrypt (secure password hashing)
-
-Database
-- PostgreSQL
-- Schema used: petvida
-
-Tools
-- pgAdmin
-- Git
-- GitHub
-
----
-
-## INSTALLATION
-
-Install dependencies:
-
-pip install psycopg2 bcrypt
-
-Make sure PostgreSQL is installed and running.
-
----
-
-## CONFIGURATION
-
-Update the config.py file with your database connection settings.
-
-DB_CONFIG = {
-"host": "localhost",
-"port": 5432,
-"dbname": "postgres",
-"user": "postgres",
-"password": "YOUR_PASSWORD",
-"options": "-c search_path=petvida"
-}
-
-After that run the SQL script:
-
-database/dbcode.sql
-
-This script creates:
-
-- petvida schema
-- all system tables
-- constraints
-- indexes
-
----
-
-## EXECUTION
-
-Run the system with:
-
-python main.py
-
-During the first execution:
-
-- The schema will be created if it does not exist
-- Tables will be automatically generated
-- A default administrator user will be created
-- The main menu will be displayed
-
----
-
-## DATABASE MODELING
-
-Based on the Minimundo, ER Model (MER), and ER Diagram (DER) created for the academic project.
-
-Main Entities
-
-- Owner
-- Animal
-- Consultation
-- Surgery
-- User (Administrator, Owner, Veterinarian)
-
-Relationships
-
-Owner → Animal  
-Animal → Consultation  
-Animal → Surgery  
-User (Owner) → Owner  
-
-Integrity is enforced using foreign keys and ON DELETE CASCADE.
-
----
-
-## FEATURES
-
-Administrator
-- Manage users
-- Manage owners
-- Manage animals
-- Register consultations
-- Register surgeries
-- Generate reports
-
-Owner
-- View personal data
-- Update personal information
-- Register animals
-- View registered animals
-- Check consultations
-- Cancel consultations
-
-Veterinarian
-- View animals
-- Register consultations
-- Register surgeries
-- View their own appointments
-- Filter consultations by period
-
----
-
-## SECURITY
-
-The system implements:
-
-- Password hashing with bcrypt
-- Login blocking after multiple failed attempts
-- Input validation
-- Role-based access control
-- PostgreSQL constraints
-
----
-
-## DIRECTORY STRUCTURE
-
-petvida/
-petvida/ → source code  
-config.py → database configuration  
-main.py → system entry point  
-menus.py → menu navigation  
-services.py → business logic  
-utils.py → validation functions  
-
-docs/ → project documentation  
-dbcode.sql → database creation script  
-README.md → repository documentation  
-
----
-## LICENSE
-
-This project was developed for academic purposes as part of the **Database Project course at CESMAC**.
-
-Use for study and educational purposes is permitted, provided that the authors are properly credited.
-
-Authors:  
-**Eduardo Souza de Barros**  
-**Gabriel Stoffel Cirilo**
-
----
-
-# HOSPITAL VETERINÁRIO PETVIDA  
+# HOSPITAL VETERINÁRIO PETVIDA
 ### Sistema de Gerenciamento em Python + PostgreSQL
-PT-BR
+
+[English](README.en.md) · **Português**
+
 ---
 
 ## AUTORES  
@@ -244,7 +40,7 @@ O sistema foi projetado para fins acadêmicos, seguindo boas práticas de modela
 O sistema foi dividido em módulos para facilitar manutenção, leitura e organização:
 
 ```
-src/
+petvida/
 │  config.py        → Configuração e conexão com PostgreSQL
 │  main.py          → Arquivo principal e fluxo da aplicação
 │  menus.py         → Todos os menus e navegação
@@ -298,10 +94,10 @@ DB_CONFIG = {
 }
 ```
 
-Após isso, execute o script SQL:
+Após isso, execute o script SQL `dbcode.txt` (na raiz do repositório) no PostgreSQL, por exemplo pelo pgAdmin ou com:
 
-```
-/database/dbcode.sql
+```bash
+psql -U postgres -f dbcode.txt
 ```
 
 Esse script cria:
@@ -319,6 +115,7 @@ Esse script cria:
 Para iniciar o sistema:
 
 ```bash
+cd petvida
 python main.py
 ```
 
@@ -414,7 +211,7 @@ petvida/
 ├── docs/                   # Documentação do projeto (MER, DER, Minimundo, relatório etc.)
 │   └── *arquivos.docx*
 │
-├── dbcode.sql              # Script SQL contendo criação de schema, tabelas e constraints
+├── dbcode.txt              # Script SQL contendo criação de schema, tabelas e constraints
 │
 ├── README.md               # Documentação principal do repositório
 │
