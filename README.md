@@ -81,7 +81,14 @@ Certifique-se de que o PostgreSQL está instalado e funcionando corretamente.
 
 ## CONFIGURAÇÃO
 
-Ajuste o arquivo `config.py` com os dados da sua conexão:
+Defina a senha do PostgreSQL na variável de ambiente `PETVIDA_DB_PASSWORD`:
+
+```bash
+export PETVIDA_DB_PASSWORD="sua_senha"      # Linux / macOS
+set PETVIDA_DB_PASSWORD=sua_senha           # Windows (cmd)
+```
+
+Os outros dados da conexão ficam em `config.py`:
 
 ```python
 DB_CONFIG = {
@@ -89,7 +96,7 @@ DB_CONFIG = {
     "port": 5432,
     "dbname": "postgres",
     "user": "postgres",
-    "password": "SUA_SENHA",
+    "password": os.environ.get("PETVIDA_DB_PASSWORD", ""),
     "options": "-c search_path=petvida"
 }
 ```

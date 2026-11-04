@@ -81,7 +81,14 @@ Make sure PostgreSQL is installed and running.
 
 ## CONFIGURATION
 
-Update `config.py` with your connection settings:
+Set the PostgreSQL password in the `PETVIDA_DB_PASSWORD` environment variable:
+
+```bash
+export PETVIDA_DB_PASSWORD="your_password"  # Linux / macOS
+set PETVIDA_DB_PASSWORD=your_password       # Windows (cmd)
+```
+
+The other connection settings are in `config.py`:
 
 ```python
 DB_CONFIG = {
@@ -89,7 +96,7 @@ DB_CONFIG = {
     "port": 5432,
     "dbname": "postgres",
     "user": "postgres",
-    "password": "YOUR_PASSWORD",
+    "password": os.environ.get("PETVIDA_DB_PASSWORD", ""),
     "options": "-c search_path=petvida"
 }
 ```

@@ -1,13 +1,13 @@
 import os
 import bcrypt  # pip install bcrypt
 
-# Config do banco
+# Config do banco (a senha vem da variável de ambiente PETVIDA_DB_PASSWORD)
 DB_CONFIG = {
     "host": "localhost",
     "port": 5432,
     "dbname": "postgres",
     "user": "postgres",
-    "password": "2904",
+    "password": os.environ.get("PETVIDA_DB_PASSWORD", ""),
     "options": "-c search_path=petvida"
 }
 
