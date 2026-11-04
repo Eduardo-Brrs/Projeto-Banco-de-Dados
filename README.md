@@ -1,32 +1,19 @@
-# HOSPITAL VETERINÁRIO PETVIDA
-### Sistema de Gerenciamento em Python + PostgreSQL
+# PetVida — Hospital Veterinário
+
+Sistema de gerenciamento em Python + PostgreSQL.
 
 [English](README.en.md) · **Português**
 
 ---
 
-## AUTORES  
-**Eduardo Souza de Barros**  
-**Gabriel Stoffel Cirilo**
+## Autores
+Eduardo Souza de Barros  
+Gabriel Stoffel Cirilo
 
 ---
 
-## SUMÁRIO
-- Visão Geral  
-- Arquitetura do Sistema  
-- Tecnologias Utilizadas  
-- Instalação  
-- Configuração  
-- Execução  
-- Modelagem do Banco  
-- Funcionalidades  
-- Segurança  
-- Estrutura de Diretórios  
-- Licença  
 
----
-
-## VISÃO GERAL
+## Visão geral
 
 O Sistema PetVida é uma aplicação de gerenciamento veterinário desenvolvida em Python integrado ao banco PostgreSQL.  
 A solução permite administrar tutores, animais, consultas, cirurgias e usuários, com controle de acesso baseado em perfis (Administrador, Tutor e Veterinário).
@@ -35,7 +22,7 @@ O sistema foi projetado para fins acadêmicos, seguindo boas práticas de modela
 
 ---
 
-## ARQUITETURA DO SISTEMA
+## Arquitetura do sistema
 
 O sistema foi dividido em módulos para facilitar manutenção, leitura e organização:
 
@@ -50,7 +37,7 @@ petvida/
 
 ---
 
-## TECNOLOGIAS UTILIZADAS
+## Tecnologias utilizadas
 
 ### Backend
 - Python 3  
@@ -67,7 +54,7 @@ petvida/
 
 ---
 
-## INSTALAÇÃO
+## Instalação
 
 Instale as dependências do projeto:
 
@@ -79,7 +66,7 @@ Certifique-se de que o PostgreSQL está instalado e funcionando corretamente.
 
 ---
 
-## CONFIGURAÇÃO
+## Configuração
 
 Defina a senha do PostgreSQL na variável de ambiente `PETVIDA_DB_PASSWORD`:
 
@@ -117,7 +104,7 @@ Esse script cria:
 
 ---
 
-## EXECUÇÃO
+## Execução
 
 Para iniciar o sistema:
 
@@ -137,16 +124,16 @@ Após o login, o usuário acessa o menu correspondente ao seu perfil.
 
 ---
 
-## MODELAGEM DO BANCO
+## Modelagem do banco
 
 Baseada no Minimundo, MER e DER desenvolvidos no projeto acadêmico.
 
 ### Entidades Principais
-- **Dono**
-- **Animal**
-- **Consulta**
-- **Cirurgia**
-- **Usuário** (Administrador, Tutor e Veterinário)
+- Dono
+- Animal
+- Consulta
+- Cirurgia
+- Usuário (Administrador, Tutor e Veterinário)
 
 ### Relacionamentos Essenciais
 - Dono → Animal  
@@ -158,7 +145,7 @@ Toda integridade é mantida via foreign keys e políticas ON DELETE CASCADE.
 
 ---
 
-## FUNCIONALIDADES
+## Funcionalidades
 
 ### Administrador
 - Criar, editar e excluir usuários  
@@ -193,7 +180,7 @@ Toda integridade é mantida via foreign keys e políticas ON DELETE CASCADE.
 
 ---
 
-## SEGURANÇA
+## Segurança
 
 O sistema implementa:
 
@@ -205,7 +192,7 @@ O sistema implementa:
 
 ---
 
-## ESTRUTURA DE DIRETÓRIOS
+## Estrutura de diretórios
 ```
 petvida/
 ├── petvida/                # Pasta principal do código-fonte da aplicação
@@ -226,9 +213,9 @@ petvida/
 
 ---
 
-## LICENÇA
+## Licença
 
 Projeto acadêmico desenvolvido para a disciplina de Projeto de Banco de Dados – CESMAC.  
 Uso permitido para fins de estudo, desde que citados os autores:  
-**Eduardo Souza de Barros**  
-**Gabriel Stoffel Cirilo**
+Eduardo Souza de Barros  
+Gabriel Stoffel Cirilo

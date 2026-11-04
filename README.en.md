@@ -1,32 +1,19 @@
-# PETVIDA VETERINARY HOSPITAL
-### Management System in Python + PostgreSQL
+# PetVida — Veterinary Hospital
+
+Management system in Python + PostgreSQL.
 
 **English** · [Português](README.md)
 
 ---
 
-## AUTHORS
-**Eduardo Souza de Barros**  
-**Gabriel Stoffel Cirilo**
+## Authors
+Eduardo Souza de Barros  
+Gabriel Stoffel Cirilo
 
 ---
 
-## TABLE OF CONTENTS
-- Overview  
-- System Architecture  
-- Technologies Used  
-- Installation  
-- Configuration  
-- Execution  
-- Database Modeling  
-- Features  
-- Security  
-- Directory Structure  
-- License  
 
----
-
-## OVERVIEW
+## Overview
 
 PetVida is a veterinary management system developed in Python integrated with a PostgreSQL database.  
 It manages pet owners, animals, consultations, surgeries and users, with role-based access control (Administrator, Owner and Veterinarian).
@@ -35,7 +22,7 @@ The system was designed for academic purposes, following good practices of datab
 
 ---
 
-## SYSTEM ARCHITECTURE
+## System architecture
 
 The system is split into modules to make it easier to maintain, read and organize:
 
@@ -50,7 +37,7 @@ petvida/
 
 ---
 
-## TECHNOLOGIES USED
+## Technologies used
 
 ### Backend
 - Python 3  
@@ -67,7 +54,7 @@ petvida/
 
 ---
 
-## INSTALLATION
+## Installation
 
 Install the project dependencies:
 
@@ -79,7 +66,7 @@ Make sure PostgreSQL is installed and running.
 
 ---
 
-## CONFIGURATION
+## Configuration
 
 Set the PostgreSQL password in the `PETVIDA_DB_PASSWORD` environment variable:
 
@@ -117,7 +104,7 @@ This script creates:
 
 ---
 
-## EXECUTION
+## Execution
 
 To start the system:
 
@@ -137,16 +124,16 @@ After logging in, each user sees the menu for their role.
 
 ---
 
-## DATABASE MODELING
+## Database modeling
 
 Based on the mini-world description, the ER model and the ER diagram developed for the academic project.
 
 ### Main entities
-- **Owner** (`dono`)
-- **Animal**
-- **Consultation** (`consulta`)
-- **Surgery** (`cirurgia`)
-- **User** (Administrator, Owner and Veterinarian)
+- Owner (`dono`)
+- Animal
+- Consultation (`consulta`)
+- Surgery (`cirurgia`)
+- User (Administrator, Owner and Veterinarian)
 
 ### Key relationships
 - Owner → Animal  
@@ -158,7 +145,7 @@ All integrity is enforced with foreign keys and ON DELETE CASCADE policies.
 
 ---
 
-## FEATURES
+## Features
 
 ### Administrator
 - Create, edit and delete users  
@@ -193,7 +180,7 @@ All integrity is enforced with foreign keys and ON DELETE CASCADE policies.
 
 ---
 
-## SECURITY
+## Security
 
 The system implements:
 
@@ -205,7 +192,7 @@ The system implements:
 
 ---
 
-## DIRECTORY STRUCTURE
+## Directory structure
 ```
 petvida/
 ├── petvida/                # Main application source folder
@@ -228,9 +215,9 @@ The code, the database names and the documentation in `docs/` are in Portuguese.
 
 ---
 
-## LICENSE
+## License
 
 Academic project developed for the Database Project course at CESMAC.  
 Use for study purposes is permitted, provided the authors are credited:  
-**Eduardo Souza de Barros**  
-**Gabriel Stoffel Cirilo**
+Eduardo Souza de Barros  
+Gabriel Stoffel Cirilo
